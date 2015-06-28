@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script>
+    var getFriends = function() {
+      var promise = $.ajax({type: 'GET', url: "/api/getfriends"});
+
+      promise.done(function (data) {
+        var friendsArray = JSON.parse(data);
+        friendsArray.forEach(function (friend) {
+          $('#list').append('<li>' + friend + '</li>');
+        });
+      });
+    };
+  </script>
+</head>
+<body>
+
+  <h1>This is just a basic file</h1>
+  <button id="button" onclick="getFriends()">Button</button>
+  <p>I should have three friends:</p>
+  <ul id="list"></ul>
+
+</body>
+</html>
